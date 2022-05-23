@@ -81,17 +81,12 @@ def estimate_rating(similar_movs):
 def model_evaluation(data_test, total_matrix):
     real_ratings = []
     predicted_ratings = []
-    print(len(data_test))
-    i = 0
     for line in data_test:
-        
         user, movie, rating, _ = line
         user = int(user)-1
         real_ratings.append(float(rating))
         sm = get_similar_movies(total_matrix, by_users, movie, user) # Neighbor selection
         predicted_ratings.append(estimate_rating(sm)) # Estimated rating
-        print(i)
-        i+=1
     return real_ratings, predicted_ratings
 
 
